@@ -1,0 +1,29 @@
+<div>
+    Search : <input type="text" [(ngModel)]="search">
+    <a style="margin-left: 10px;" routerLink='/login' (click)=handleLogout()>logout</a>
+</div>
+<table border="1" class ="table" style="margin-top: 10px;">
+    <caption>
+        <a>CROPS</a>
+    </caption>
+    <thead>
+        <tr>
+            <th></th>
+            <th>NAME</th>
+            <th>SEASON</th>
+            <th>SOWING TIME</th>
+            <th>HARVESTING TIME</th>
+            <th>DURATION</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let crop of cropsList" >
+            <td>{{crop.id}}</td>
+            <td (click)="getCropDetails(crop.name)">{{crop.name}}</td>
+            <td>{{crop.season}}</td>
+            <td>{{crop.sowingTime}}</td>
+            <td>{{crop.harvestingTime}}</td>
+            <td>{{crop.duration}}</td>
+        </tr>
+    </tbody>
+</table>

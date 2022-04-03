@@ -1,22 +1,125 @@
-<div>
-    Search : <input type="text" [(ngModel)]="search">
+<div class ="container" style="font-size: xx-large">
+  <input type="text" [(ngModel)]="search" (keydown.enter)="searching()">
+  <button (click) = 'searching()' style="margin-right: 500px">Search Order</button>
+  <a style="min-width: 500px"></a>
+  <button>Add A Product</button>
+  <button style="margin-left: 500px">
     <a style="margin-left: 10px;" routerLink='/login' (click)=handleLogout()>logout</a>
-</div>
-<table border="1" class ="table" style="margin-top: 10px;">
+  </button>
+<div>
+<table border="1" class ="content-table" style="margin-top: 10px; width: 100%;">
     <caption>
-        <a>CROPS</a>
+        <a>ORDERS</a>
     </caption>
     <thead>
         <tr>
             <th></th>
-            <th>NAME</th>
-            <th>SEASON</th>
-            <th>SOWING TIME</th>
-            <th>HARVESTING TIME</th>
-            <th>DURATION</th>
+            <th>Image </th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Platform </th>
+            <th>Price </th>
+            <th>Quantity </th>
         </tr>
     </thead>
     <tbody>
+<!--        <tr>-->
+<!--            <td>1</td>-->
+<!--            <td>-->
+<!--              <img src="https://media.istockphoto.com/photos/red-apple-picture-id184276818" style="width:100%" style="height:100px">-->
+<!--            </td>-->
+<!--            <td>Apple</td>-->
+<!--            <td>Organic</td>-->
+<!--            <td>Instagram</td>-->
+<!--            <td>Rs 110/kg</td>-->
+<!--            <td>2 kgs</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>2</td>-->
+<!--            <td>-->
+<!--              <img src="https://media.gettyimages.com/photos/banana-bunch-picture-id173242750?s=2048x2048" style="width:100%" style="height:100px">-->
+<!--            </td>-->
+<!--            <td>Bananas</td>-->
+<!--            <td>Fresh</td>-->
+<!--            <td>FaceBook</td>-->
+<!--            <td>Rs 50/dozen</td>-->
+<!--            <td>1 dozen</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>3</td>-->
+<!--            <td>-->
+<!--              <img src="https://media.gettyimages.com/photos/carrot-picture-id182462595?s=2048x2048" style="width:100%" style="height:100px">-->
+<!--            </td>-->
+<!--            <td>Carrot</td>-->
+<!--            <td>Fresh and Sweet</td>-->
+<!--            <td>FaceBook</td>-->
+<!--            <td>Rs 50/kg</td>-->
+<!--            <td>1 kg</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>3</td>-->
+<!--            <td>-->
+<!--              <img src="https://media.gettyimages.com/photos/carrot-picture-id182462595?s=2048x2048" style="width:100%" style="height:100px">-->
+<!--            </td>-->
+<!--            <td>{{order.results[0].product.product_name}}</td>-->
+<!--            <td>Fresh and Sweet</td>-->
+<!--            <td>FaceBook</td>-->
+<!--            <td>Rs 50/kg</td>-->
+<!--            <td>1 kg</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>4</td>-->
+<!--            <td>-->
+<!--              <img src="https://media.istockphoto.com/photos/red-apple-picture-id184276818" style="width:100%" style="height:100px">-->
+<!--            </td>-->
+<!--            <td>Apple</td>-->
+<!--            <td>Organic</td>-->
+<!--            <td>Instagram</td>-->
+<!--            <td>Rs 110/kg</td>-->
+<!--            <td>2 kgs</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>5</td>-->
+<!--            <td>-->
+<!--              <img src="https://media.gettyimages.com/photos/banana-bunch-picture-id173242750?s=2048x2048" style="width:100%" style="height:100px">-->
+<!--            </td>-->
+<!--            <td>Bananas</td>-->
+<!--            <td>Fresh</td>-->
+<!--            <td>FaceBook</td>-->
+<!--            <td>Rs 50/dozen</td>-->
+<!--            <td>1 dozen</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>6</td>-->
+<!--            <td>-->
+<!--              <img src="https://media.gettyimages.com/photos/carrot-picture-id182462595?s=2048x2048" style="width:100%" style="height:100px">-->
+<!--            </td>-->
+<!--            <td>Carrot</td>-->
+<!--            <td>Fresh and Sweet</td>-->
+<!--            <td>FaceBook</td>-->
+<!--            <td>Rs 50/kg</td>-->
+<!--            <td>1 kg</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>7</td>-->
+<!--            <td>-->
+<!--              <img src="https://media.gettyimages.com/photos/carrot-picture-id182462595?s=2048x2048" style="width:100%" style="height:100px">-->
+<!--            </td>-->
+<!--            <td>{{order.results[0].product.product_name}}</td>-->
+<!--            <td>Fresh and Sweet</td>-->
+<!--            <td>FaceBook</td>-->
+<!--            <td>Rs 50/kg</td>-->
+<!--            <td>1 kg</td>-->
+<!--        </tr>-->
+        <tr *ngFor="let result of order.results; let i=index">
+            <td>{{i+1}}</td>
+            <td><img src='{{result.product.product_image}}' style="width:100%" style="height:120px"></td>
+            <td>{{result.product.product_name}}</td>
+            <td>{{result.product.product_description}}</td>
+            <td>{{result.platform.platform_name}}</td>
+            <td>{{result.product.cost_price}}</td>
+            <td>{{result.quantity}}</td>
+        </tr>
         <tr *ngFor="let crop of cropsList" >
             <td>{{crop.id}}</td>
             <td (click)="getCropDetails(crop.name)">{{crop.name}}</td>
@@ -27,3 +130,4 @@
         </tr>
     </tbody>
 </table>
+</div>

@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'welcome/:name', component:WelcomeComponent,canActivate:[RouteGuardService]},
   {path:'login', component:LoginComponent},
-  {path:'crops', component:ListOfCropsComponent,canActivate:[RouteGuardService]},
+  {path:'order', component:ListOfCropsComponent,canActivate:[RouteGuardService]},
   {path:'crops/:cropName', component:CropDetailsComponent,canActivate:[RouteGuardService]},
   {path:'**', component:ErrorComponent}
 ];
